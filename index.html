@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Aurora: SpeakX Notification Orchestrator</title>
+    
+    <!-- Google Fonts for Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css?v=6">
+    
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                renderActions: {
+                    addMenu: []
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">Project Aurora</div>
+        <div>
+            <a href="#about">About</a>
+            <a href="#phase1">Phase 1</a>
+            <a href="#phase2">Phase 2</a>
+            <a href="#phase3">Phase 3</a>
+            <a href="#architecture">Architecture</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content fade-in visible">
+            <div class="badge">SpeakX Notification Orchestrator</div>
+            <h1 class="gradient-text">SpeakX Intelligent Notifications</h1>
+            <h2>A Self-Learning Orchestrator using K-Means, LLMs, and UCB1 Exploration</h2>
+            <p class="hero-desc">Replacing static, rule-based campaigns with an autonomous learning engine to drive habit formation for users transitioning to confident English speakers.</p>
+            <a href="#about" class="cta-button">Explore the Project</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1 -->
+        <section id="about" class="content-section">
+            <div class="text-container slide-up">
+                <h3 class="section-heading">The Core Problem</h3>
+                <p class="lead">Static, rule-based push notifications suffer from severe limitations. We needed an engine capable of adapting and learning.</p>
+                
+                <div class="highlight-box">
+                    <h4>Key Vulnerabilities Addressed</h4>
+                    <ul>
+                        <li><strong>The Segmentation Deficit:</strong> Static campaigns blast the same message. We built MECE segments mapping directly to distinct user motivations (e.g., Gamification vs. AI Tutors).</li>
+                        <li><strong>The Learning Bottleneck:</strong> Rule-based systems don't adapt. We needed an autonomous loop capable of classifying performance and aggressively exploring new variants while exploiting high performers.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="phase1" class="content-section">
+            <div class="text-container slide-up">
+                <h3 class="section-heading">Phase 1: Ingestion & K-Means Segmentation</h3>
+                <p class="lead">Completely automating the clustering of raw user telemetry into actionable lifecycle profiles.</p>
+                
+                <div class="grid-layout">
+                    <div class="glass-card">
+                        <h4>Ingestion Pipeline</h4>
+                        <p>Validates raw user CSV data, applying <em>KNN-Imputation</em> for missing values, engineering behavioral features (sessions, streaks), and scoring activeness/propensity mathematically.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h4>Algorithmic Clustering</h4>
+                        <p>Implemented <strong>K-Means Clustering</strong> ($k=8$) validated by Decision Tree rules to partition users based on demographics, tier-city context, and feature usage.</p>
+                    </div>
+                    <div class="glass-card full-span">
+                        <h4>Goal Mapping</h4>
+                        <p>Leveraging Gemini 2.5 Flash, the <code>goal_builder</code> module reads the segments alongside an ingested Markdown Knowledge Bank to dynamically generate day-on-day engagement goals mapped to the Trial vs. Paid lifecycle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="phase2" class="content-section">
+            <div class="text-container slide-up">
+                <h3 class="section-heading">Phase 2: Theme Engine & Bilingual Templates</h3>
+                
+                <div class="feature-block">
+                    <div class="feature-text">
+                        <h4>The Octalysis Hook System</h4>
+                        <p>Utilizes the 8 Core Drives of the <strong>Octalysis Framework</strong> (e.g., Epic Meaning, Loss Avoidance, Scarcity) to power the theme and template generation.</p>
+                        
+                        <ul class="professional-list">
+                            <li><strong>Dynamic Generation:</strong> The LLM creates exactly 5 distinct, bilingual (Hindi + English) templates per Segment $\times$ Time Unit $\times$ Theme.</li>
+                            <li><strong>Paced Schedules:</strong> Schedules 3-9 notifications daily across 6 standard time windows based on user activeness scores, deploying strict guardrails (reducing frequency if uninstall rate $> 2\%$).</li>
+                        </ul>
+                        
+                        <div class="tech-tags">
+                            <span>Python</span>
+                            <span>LLM (Gemini)</span>
+                            <span>Octalysis Framework</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="phase3" class="content-section">
+            <div class="text-container slide-up">
+                <h3 class="section-heading">Phase 3: The Autonomous Learning Engine</h3>
+                <p class="lead">Bridging the gap between static campaigns and an AI agent using reinforcement learning heuristics.</p>
+                
+                <div class="highlight-box">
+                    <h4>Exploration vs. Exploitation via UCB1</h4>
+                    <p>Templates are classified into three buckets: GOOD (CTR $> 15\%$), NEUTRAL, and BAD (CTR $< 5\%$). Modeled as a Multi-Armed Bandit problem using the Upper Confidence Bound algorithm.</p>
+                    
+                    <div class="math-block" style="text-align: center; margin: 2rem 0; font-size: 1.2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; font-family: monospace;">
+                        $$ \text{UCB}_j = \bar{X}_j + c \sqrt{\frac{\ln n}{n_j}} $$
+                        <br>
+                        <span style="font-size: 1rem; color: var(--text-secondary);">Where $\bar{X}_j$ is the engagement score, and $c=0.15$</span>
+                    </div>
+                    
+                    <p>BAD templates are immediately suppressed ($\text{UCB} = -1$) and rewritten fresh by Gemini. Optimal delivery timing is updated dynamically using an Exponential Moving Average (EMA) with $\alpha = 0.70$.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="architecture" class="content-section">
+            <div class="text-container slide-up">
+                <h3 class="section-heading">The Final Architecture</h3>
+                <p class="lead">Fully orchestrated through a single Python entry point managing over 50 LLM calls sequentially.</p>
+                
+                <div class="table-container">
+                    <table class="professional-table">
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>Modules</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pipeline Generation</td>
+                                <td><code>ingest</code> &amp; <code>kb</code></td>
+                                <td>Parse user data and Knowledge Bank</td>
+                            </tr>
+                            <tr>
+                                <td>Pipeline Generation</td>
+                                <td><code>segment</code></td>
+                                <td>KMeans ($k=8$) user clustering</td>
+                            </tr>
+                            <tr>
+                                <td>Pipeline Generation</td>
+                                <td><code>goals</code> &amp; <code>theme</code></td>
+                                <td>LLM-driven Octalysis mapping</td>
+                            </tr>
+                            <tr>
+                                <td>Pipeline Generation</td>
+                                <td><code>template</code>, <code>timing</code>, <code>schedule</code></td>
+                                <td>Generate final user schedules</td>
+                            </tr>
+                            <tr>
+                                <td>Self-Learning Engine</td>
+                                <td><code>experiment_results.csv</code></td>
+                                <td>Ingest feedback data</td>
+                            </tr>
+                            <tr>
+                                <td>Self-Learning Engine</td>
+                                <td>Classification</td>
+                                <td>Apply EMA / UCB1 logic</td>
+                            </tr>
+                            <tr>
+                                <td>Self-Learning Engine</td>
+                                <td>Regeneration</td>
+                                <td>Regenerate failing variants via LLM intervention</td>
+                            </tr>
+                            <tr>
+                                <td>Self-Learning Engine</td>
+                                <td><code>learning_delta_report.csv</code></td>
+                                <td>Output explicit causal logs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">Project Aurora</div>
+        <p>SpeakX Notification Orchestrator.</p>
+        <div class="copyright">&copy; 2026 Project Aurora. All rights reserved.</div>
+    </footer>
+    
+    <script>
+        // Simple script to handle fade-in animations on scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.slide-up, .fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
